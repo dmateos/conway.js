@@ -1,0 +1,31 @@
+Conway.js
+====
+
+
+What?
+----
+A implementation of conways game of life in Javascript with a html5 canvas renderer and hopefully a css renderer in the future.
+
+Why?
+----
+Wrote it in C ages ago and decided to port, might make a cool background for my website. 
+
+Demo
+----
+[demo](http://mateos.cc/scripts/conway/demo.html)
+
+Usage
+----
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="conway.js"></script>
+	<script type="text/javascript" src="conwayui.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var pool = new Pool(250, 160);
+		pool.init_pool_rand();
+		$('#display').conway(pool, 50, 5, "rgb(53,71,89)");
+	});
+
+	..HTML....
+
+	<canvas id="display"></canvas> 
