@@ -1,21 +1,22 @@
-var Pool = function(size) {
+var Pool = function(xsize, ysize) {
 	/* Setup the 2d data pool. */
-	this.data = new Array(size);
-	for(var x = 0; x < size; x++) {
-		this.data[x] = new Array(size);
-		for(var y = 0; y < size; y++) {
+	this.data = new Array(xsize);
+	for(var x = 0; x < xsize; x++) {
+		this.data[x] = new Array(ysize);
+		for(var y = 0; y < ysize; y++) {
 			this.data[x][y] = 0;
 		}
 	}
 
 	/* Size of the pool and blocksize of each cell. */
-	this.size = size;
+	this.xsize = xsize;
+	this.ysize = ysize;
 };
 
 /* Inits a pool with a randomish set of cells. */
 Pool.prototype.init_pool_rand = function() {
-	for(var x = 0; x < this.size; x++) {
-		for(var y = 0; y < this.size; y++) {
+	for(var x = 0; x < this.xsize; x++) {
+		for(var y = 0; y < this.ysize; y++) {
 			this.data[x][y] = !Math.round(Math.random());
 		}
 	}
@@ -23,11 +24,11 @@ Pool.prototype.init_pool_rand = function() {
 
 /* Copies a pools state into a new object. */
 Pool.prototype.copy_pool = function() {
-	var copy = new Array(this.size);
+	var copy = new Array(this.xsize);
 
-	for(var x = 0; x < this.size; x++) {
-		copy[x] = new Array(this.size);
-		for(var y = 0; y < this.size; y++) {
+	for(var x = 0; x < this.xsize; x++) {
+		copy[x] = new Array(this.ysize);
+		for(var y = 0; y < this.ysize; y++) {
 			copy[x][y] = this.data[x][y];
 		}
 	}
@@ -41,25 +42,25 @@ Pool.prototype.neighbour_count = function(data, x, y) {
 	if((x-1 >= 0) && data[x-1][y] == 1)
 		ncount++;
 	/* RIGHT */
-	if((x+1 < this.size) && data[x+1][y] == 1) 
+	if((x+1 < this.xsize) && data[x+1][y] == 1) 
 		ncount++;
 	/* UP */
 	if((y-1 >= 0) && data[x][y-1] == 1)
 		ncount++;
 	/* DOWN */
-	if((y+1 < this.size) && data[x][y+1] == 1)
+	if((y+1 < this.ysize) && data[x][y+1] == 1)
 		ncount++;
 	/* UP LEFT */
 	if((x-1 >= 0) && (y-1 >= 0) && data[x-1][y-1] == 1)
 		ncount++;
 	/* UP RIGHT. */
-	if((x+1 < this.size) && (y-1 >= 0) && data[x+1][y-1] == 1)
+	if((x+1 < this.xsize) && (y-1 >= 0) && data[x+1][y-1] == 1)
 		ncount++;
 	/* DOWN LEFT */
-	if((x-1 >= 0) && (y+1 < this.size) && data[x-1][y+1] == 1)
+	if((x-1 >= 0) && (y+1 < this.ysize) && data[x-1][y+1] == 1)
 		ncount++;
 	/* DOWN RIGHT */ 
-	if((x+1 < this.size) && (y+1 < this.size) && data[x+1][y+1] == 1) 
+	if((x+1 < this.xsize) && (y+1 < this.ysize) && data[x+1][y+1] == 1) 
 		ncount++;
 	
 	return ncount;
@@ -69,8 +70,8 @@ Pool.prototype.neighbour_count = function(data, x, y) {
 Pool.prototype.comp_pool = function() {
 	var poolstate = this.copy_pool();
 
-	for(var x = 0; x < this.size; x++) {
-		for(var y = 0; y < this.size; y++) {
+	for(var x = 0; x < this.xsize; x++) {
+		for(var y = 0; y < this.ysize; y++) {
 			var ncount = this.neighbour_count(poolstate, x, y);
 			var state = this.data[x][y];
 

@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="conwayui.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var pool = new Pool(80);
+		var pool = new Pool(120, 80);
 		pool.init_pool_rand();
 		$('#display').conway(pool, 100, 10);
 	});
