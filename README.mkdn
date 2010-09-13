@@ -4,11 +4,11 @@ Conway.js
 
 What?
 ----
-A implementation of conways game of life in Javascript with a html5 canvas renderer and hopefully a css renderer in the future.
+A implementation of Conways Game Of Life in javascript with a html5 canvas renderer and hopefully a pure css renderer soon.
 
 Why?
 ----
-Wrote it in C ages ago and decided to port, might make a cool background for my website. 
+I wrote it in C ages ago and decided to spend a few hours porting, might make a cool background for my website. 
 
 Demo
 ----
@@ -26,6 +26,6 @@ Usage
 		$('#display').conway(pool, 50, 5, "rgb(53,71,89)");
 	});
 
-	..HTML....
+	....HTML....
 
 	<canvas id="display"></canvas> 

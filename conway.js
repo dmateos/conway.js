@@ -50,7 +50,6 @@ Pool.prototype.init_pool_rand = function() {
 /* Copies a pools state into a new object. */
 Pool.prototype.copy_pool = function() {
 	var copy = new Array(this.xsize);
-
 	for(var x = 0; x < this.xsize; x++) {
 		copy[x] = new Array(this.ysize);
 		for(var y = 0; y < this.ysize; y++) {
@@ -106,7 +105,6 @@ Pool.prototype.comp_pool = function() {
 					if(state == 1)
 						this.data[x][y] = 0;
 					break;
-
 				case 2:
 					break;
 				case 3:
