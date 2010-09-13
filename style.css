@@ -1,0 +1,9 @@
+body {
+	background-color: #293c4f;
+	margin: 0 auto;
+}
+
+canvas#display {
+	border-style: dashed;
+	border-color: #5b6a79;
+}

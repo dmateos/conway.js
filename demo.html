@@ -1,0 +1,18 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="conway.js"></script>
+	<script type="text/javascript" src="conwayui.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var pool = new Pool(80);
+		pool.init_pool_rand();
+		$('#display').conway(pool, 100, 10);
+	});
+	</script>
+</head>
+<body>
+	<canvas id="display"></canvas>
+</body>
+</html>
