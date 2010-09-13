@@ -1,6 +1,6 @@
 (function() {
 	/* Draws and updates a conway pool every x seconds, added to jquery as a plugin. */
-	jQuery.fn.conway = function(pool, timer, blocksize) {
+	jQuery.fn.conway = function(pool, timer, blocksize, colour) {
 		var canvas = this[0];
 		var context = canvas.getContext('2d');
 		canvas.width = pool.xsize * blocksize;
@@ -9,7 +9,7 @@
 		/* Draw the pool to a canvas. */
 		draw_update = function() {
 			context.clearRect(0,0,canvas.width,canvas.height);
-			context.fillStyle = "rgb(91,106,121)";
+			context.fillStyle = colour;
 			for(var x = 0; x < pool.xsize; x++) {
 				for(var y  = 0; y < pool.ysize; y++) {
 					if(pool.data[x][y] == 1) {

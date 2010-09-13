@@ -4,6 +4,5 @@ body {
 }
 
 canvas#display {
-	border-style: dashed;
 	border-color: #5b6a79;
 }
