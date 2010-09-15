@@ -36,6 +36,7 @@ var Pool = function(xsize, ysize) {
 	/* Size of the pool and blocksize of each cell. */
 	this.xsize = xsize;
 	this.ysize = ysize;
+	this.locked = false; /* Lock the pool from updates. */
 };
 
 /* Inits a pool with a randomish set of cells. */
@@ -43,6 +44,15 @@ Pool.prototype.init_pool_rand = function() {
 	for(var x = 0; x < this.xsize; x++) {
 		for(var y = 0; y < this.ysize; y++) {
 			this.data[x][y] = !Math.round(Math.random());
+		}
+	}
+};
+
+/* Inits the pool with a fresh state. */
+Pool.prototype.init_pool_clear = function() {
+	for(var x = 0; x < this.xsize; x++) {
+		for(var y = 0; y < this.ysize; y++) {
+			this.data[x][y] = 0;
 		}
 	}
 };
@@ -93,6 +103,10 @@ Pool.prototype.neighbour_count = function(data, x, y) {
 /* Computes the cell pool as per the rules specified in conways game of life. */
 Pool.prototype.comp_pool = function() {
 	var poolstate = this.copy_pool();
+
+	/* If the pool is locked, cant do shit. */
+	if(this.locked) 
+		return;
 
 	for(var x = 0; x < this.xsize; x++) {
 		for(var y = 0; y < this.ysize; y++) {

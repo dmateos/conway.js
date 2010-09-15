@@ -30,8 +30,9 @@
 		var context = canvas.getContext('2d');
 		var xblocksize = (canvas.width / pool.xsize);
 		var yblocksize = (canvas.height / pool.ysize);
+		var interval;
 
-		/* Draw the pool to a canvas. */
+		/* Draws the pool to a canvas. */
 		draw_update = function() {
 			context.clearRect(0,0,canvas.width,canvas.height);
 			context.fillStyle = colour;
@@ -46,8 +47,15 @@
 			pool.comp_pool();
 		}
 
+		/* Draw new cells on mouse click. */
+		$(canvas).mousedown(function(e) {
+			var xmouse = Math.round(e.layerX/xblocksize);
+			var ymouse = Math.round(e.layerY/yblocksize);
+			pool.data[xmouse][ymouse] = 1;
+		});
+
 		/* Draw initial pool and set the callback timer. */
 		draw_update();
-		window.setInterval(draw_update, timer);		
+		interval = window.setInterval(draw_update, timer);	
 	};
 })();

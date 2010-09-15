@@ -7,12 +7,33 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var pool = new Pool(250, 175);
+		pool.locked = true;
 		pool.init_pool_rand();
+
 		$('#display').conway(pool, 50, "rgb(53,81,89)");
+
+		$('#pausebutton').click(function() {
+			pool.locked = true;
+		});
+		$('#startbutton').click(function() {
+			pool.locked = false;
+		});
+		$('#clearbutton').click(function() {
+			pool.init_pool_clear();
+		});
+		$('#randbutton').click(function() {
+			pool.init_pool_rand();
+		});
 	});
 	</script>
 </head>
 <body>
-	<canvas id="display" width="1000" height="700"></canvas>
+	<canvas id="display" width="1000" height="700"></canvas> 
+	<div>
+		<button id="randbutton" type="button">rand</button>
+		<button id="startbutton" type="button">start</button>
+		<button id="pausebutton" type="button">pause</button>
+		<button id="clearbutton" type="button">clear</button>
+	</div>
 </body>
 </html>
