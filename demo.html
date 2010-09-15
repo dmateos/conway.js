@@ -6,12 +6,12 @@
 	<script type="text/javascript" src="conwayui.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var pool = new Pool(250, 175);
+		/* Create and init pool. */
+		var pool = new Pool(250, 150);
 		pool.locked = true;
 		pool.init_pool_rand();
 
-		$('#display').conway(pool, 50, "rgb(53,81,89)");
-
+		/* Bind some event buttons to interact with it. */
 		$('#startbutton').click(function() {
 			if(pool.locked) {
 				pool.locked = false;
@@ -28,16 +28,21 @@
 			pool.init_pool_rand();
 		});
 
-		pool.compcb = function() {
-			$('#genbox').html(pool.generations);
+		/* Update text box every pool comp cycle. */
+		pool.CompDone = function() {
+			$('#genbox').html('Generation: ' + pool.generations);
 		};
+		
+		/* Call the jquery plugin to render it. */
+		$('#display').conway(pool, 50, "rgb(255,180,0)");
 	});
 	</script>
 </head>
 <body>
-	<div id="genbox">0</div>
-	<canvas id="display" width="1000" height="700"></canvas> 
+	<img src="logo.png" alt="conway.JS"/>
+	<canvas id="display" width="1000" height="600"></canvas> 
 	<div>
+		<div id="genbox">Generation: 0</div>
 		<button id="startbutton" type="button">start</button>
 		<button id="randbutton" type="button">rand</button>
 		<button id="clearbutton" type="button">clear</button>

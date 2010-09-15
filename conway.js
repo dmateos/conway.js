@@ -38,7 +38,7 @@ var Pool = function(xsize, ysize) {
 	this.ysize = ysize;
 	this.locked = false; /* Lock the pool from updates. */
 	this.generations = 0;
-	this.compcb;
+	this.CompDone;
 };
 
 /* Inits a pool with a randomish set of cells. */
@@ -137,6 +137,6 @@ Pool.prototype.comp_pool = function() {
 		}
 	}
 	this.generations++;
-	if(this.compcb);
-		this.compcb();
+	if(this.CompDone);
+		this.CompDone();
 };
