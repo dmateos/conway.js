@@ -12,11 +12,14 @@
 
 		$('#display').conway(pool, 50, "rgb(53,81,89)");
 
-		$('#pausebutton').click(function() {
-			pool.locked = true;
-		});
 		$('#startbutton').click(function() {
-			pool.locked = false;
+			if(pool.locked) {
+				pool.locked = false;
+				$('#startbutton').html('stop');
+			} else {
+				pool.locked = true;
+				$('#startbutton').html('start');
+			}
 		});
 		$('#clearbutton').click(function() {
 			pool.init_pool_clear();
@@ -24,15 +27,19 @@
 		$('#randbutton').click(function() {
 			pool.init_pool_rand();
 		});
+
+		pool.compcb = function() {
+			$('#genbox').html(pool.generations);
+		};
 	});
 	</script>
 </head>
 <body>
+	<div id="genbox">0</div>
 	<canvas id="display" width="1000" height="700"></canvas> 
 	<div>
-		<button id="randbutton" type="button">rand</button>
 		<button id="startbutton" type="button">start</button>
-		<button id="pausebutton" type="button">pause</button>
+		<button id="randbutton" type="button">rand</button>
 		<button id="clearbutton" type="button">clear</button>
 	</div>
 </body>

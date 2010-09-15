@@ -37,6 +37,8 @@ var Pool = function(xsize, ysize) {
 	this.xsize = xsize;
 	this.ysize = ysize;
 	this.locked = false; /* Lock the pool from updates. */
+	this.generations = 0;
+	this.compcb;
 };
 
 /* Inits a pool with a randomish set of cells. */
@@ -46,6 +48,7 @@ Pool.prototype.init_pool_rand = function() {
 			this.data[x][y] = !Math.round(Math.random());
 		}
 	}
+	this.generations = 0;
 };
 
 /* Inits the pool with a fresh state. */
@@ -55,6 +58,7 @@ Pool.prototype.init_pool_clear = function() {
 			this.data[x][y] = 0;
 		}
 	}
+	this.generations = 0;
 };
 
 /* Copies a pools state into a new object. */
@@ -132,4 +136,7 @@ Pool.prototype.comp_pool = function() {
 			}	
 		}
 	}
+	this.generations++;
+	if(this.compcb);
+		this.compcb();
 };

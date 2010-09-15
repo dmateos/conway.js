@@ -3,6 +3,16 @@ body {
 	margin: 0 auto;
 }
 
+div#genbox {
+	margin-left: 10px;
+}
+
+button {
+	margin-left: 10px;
+}
+
 canvas#display {
 	border-color: #5b6a79;
+	border-style: solid;
+	margin-left: 10px;
 }
