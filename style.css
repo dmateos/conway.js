@@ -1,11 +1,13 @@
 body {
 	background-color: #252525;
 	margin: 0 auto;
+	margin-top: 5px;
 }
 
 div#genbox {
-	margin-left: 10px;
+	margin-left: 15px;
 	color: #dfded9;
+	margin-bottom: 5px;
 }
 
 div#footer {
@@ -16,12 +18,13 @@ div#footer {
 }
 
 button {
-	margin-left: 10px;
+	margin-left: 15px;
 }
 
 canvas#display {
 	border-color: #1af30f;
 	border-style: solid;
-	margin-left: 10px;
+	margin-left: 15px;
 	margin-top: 5px;
+	margin-bottom: 5px;
 }
