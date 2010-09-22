@@ -57,7 +57,7 @@ Usage
 		</script>
 	</head>
 	<body>
-		<img src="logo.png" alt="conway.JS"/>
+		<div id="header"><img src="logo.png" alt="conway.JS"/></div>
 		<canvas id="display" width="1000" height="600"></canvas>
 		<div>
 			<div id="genbox">Generation: 0</div>

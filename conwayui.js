@@ -49,8 +49,8 @@
 
 		/* Draw new cells on mouse click. */
 		$(canvas).mousedown(function(e) {
-			var xmouse = Math.round((e.pageX-$(canvas).offset().left)/xblocksize);
-			var ymouse = Math.round((e.pageY-$(canvas).offset().top)/yblocksize);
+			var xmouse = Math.round(((e.pageX-$(canvas).offset().left)/xblocksize))-1;
+			var ymouse = Math.round(((e.pageY-$(canvas).offset().top)/yblocksize))-1;
 			pool.data[xmouse][ymouse] = 1;
 		});
 
